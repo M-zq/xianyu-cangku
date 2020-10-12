@@ -15,7 +15,9 @@ def guess_number():
     except:
         print(messagebox.askokcancel('提示','请输入1-1024的数字'))
 def again():
+    global num #将num变为全局变量
     set_num = random.randint(1,1024)
+    print(num)
 
 
 window = tk.Tk()
@@ -32,5 +34,5 @@ en.grid(row=4,column=2,ipadx=10,ipady=10) #text variable 可变文字
 button1 = tk.Button(window,text='确定',command=guess_number).grid(row=4,column=5,ipadx=3,ipady=3,padx=5,pady=5)#padx,pady为x轴或者y轴所留白部分
 button2 = tk.Button(window,text='再玩一次',command=again).grid(row=4,column=1,ipadx=3,ipady=3,padx=5,pady=5)
 window.mainloop()
-#这个重新开始没有弄出来，搞不明白
+
 
