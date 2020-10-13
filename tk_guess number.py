@@ -23,8 +23,8 @@ def again():
 
 
 
-window = tk.Tk()
-window.title('猜数字1-1024') #创建窗口window
+window = tk.Tk() #创建窗口window
+window.title('猜数字1-1024') 
 window.geometry('300x100') #设置窗口的长和宽
 window.resizable(width=True,height=True) #窗口变为可调0
 label1 = tk.Label(window,text='输入一个数:',bg='blue').grid(row=2,column=2,ipadx=10,ipady=10)
