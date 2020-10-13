@@ -1,0 +1,48 @@
+import random as rd
+import tkinter as tk
+from tkinter import messagebox #不加这条，下面使用messagebox的时候不知道为啥，会报错
+
+num = rd.randint(1,1024)
+def guess_number():
+    try:
+        guess_num = int(text.get())
+        if guess_num < num:
+            messagebox.askokcancel('提示','太小了')
+        elif guess_num > num:
+            messagebox.askokcancel('提示','太大了')
+        else:
+            messagebox.askokcancel('提示','猜对啦')
+    except:
+        messagebox.askokcancel('提示','请输入1-1024的数字')
+def again():
+    global num #将num变为全局变量
+    print(num)
+    flag=messagebox.askokcancel('提示','是否确认再玩一次')
+    if flag:
+        num = rd.randint(1, 1024)
+def answer():
+    global num
+    messagebox.askokcancel('答案',num)
+    num = rd.randint(1,1024)
+
+
+window = tk.Tk() #创建窗口window
+window.title('猜数字1-1024') 
+window.geometry('350x150') #设置窗口的长和宽
+window.resizable(width=True,height=True) #窗口变为可调0
+label1 = tk.Label(window,text='输入一个数:').grid(row=2,column=2,ipadx=10,ipady=10)
+
+
+# 设置和接受输入的内容
+text = tk.StringVar() #StringVar为跟踪变量的值的变化，以保证值的变更随时可以显示在界面上
+text.set('')
+en = tk.Entry(window) #创建文本框
+en['textvariable'] = text #textvariable 可变文字
+en.grid(row=4,column=2,ipadx=10,ipady=10)
+
+button1 = tk.Button(window,text='确定',command=guess_number).grid(row=4,column=5,ipadx=3,ipady=3,padx=5,pady=5)#padx,pady为x轴或者y轴所留白部分
+button2 = tk.Button(window,text='再玩一次',command=again).grid(row=4,column=1,ipadx=3,ipady=3,padx=5,pady=5)
+button3 = tk.Button(window,text='查看答案',command=answer).grid(row=6,column=2,ipadx=3,ipady=3,padx=5,pady=5)
+window.mainloop()
+
+
